@@ -1,0 +1,41 @@
+antlr4 [grammar]
+antlr4-visitor [gramma] Execute String
+antlr4-main [grammar] [rule]
+antlr4-build
+cat [textFiles] | antlr4-run
+OU
+echo [texto] | antlr4-run
+
+Para ver tree:
+cat [textFiles] | antlr4-test -gui
+OU
+echo [texto] | antlr4-test -gui
+
+Após alteração da gramática, fazer um dos seguintes:
+
+- Alterar manualmente os ficheiros de main e Execute
+- Eliminar e voltar a construir main e Execute
+- Buildar novo mian e Execute e copiar para o antigo (Acho que foi isso que o prof disse, embora n me pareça mt lógico)
+
+
+
+Ex:
+
+grammar Hello;
+greetings: 'hello' ID;
+ID: [a-z]+;
+WS: [ \t\n\r] -> skip;
+
+comandos.txt:
+hello mundoo
+hello wolrd
+hello portugal
+bye antonio
+bye andre
+bye mundo
+
+antlr4 Hello
+antlr4-visitor Hello Execute String
+antlr4-main Hello greetings
+antlr4-build
+cat comandos.txt | antlr4-run
